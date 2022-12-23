@@ -87,7 +87,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: "states",
+          model: "States",
           key: "id_state",
         },
       },
@@ -95,7 +95,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: "roles",
+          model: "Roles",
           key: "id_role",
         },
       },
@@ -103,7 +103,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: true,
         references: {
-          model: "wallets",
+          model: "Wallets",
           key: "id_wallet",
         },
       },
