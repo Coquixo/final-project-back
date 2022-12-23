@@ -7,7 +7,7 @@ const router = require("./router");
 const PORT = 5000;
 
 // //MiddleWares:
-// app.use(express.json());
+app.use(express.json());
 // //Routes
 // app.use(router);
 
