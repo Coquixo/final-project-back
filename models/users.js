@@ -15,11 +15,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       id_user: {
         type: DataTypes.INTEGER,
-        primaryKey: false,
         autoIncrement: true,
         allowNull: false,
       },
-      user_email: {
+      email: {
         type: DataTypes.STRING,
         primaryKey: true,
         allowNull: false,
@@ -29,21 +28,21 @@ module.exports = (sequelize, DataTypes) => {
           isEmail: true,
         },
       },
-      user_password: {
+      password: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [8, 255],
         },
       },
-      name_user: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [1, 25],
         },
       },
-      surname_user: {
+      surname: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -111,7 +110,7 @@ module.exports = (sequelize, DataTypes) => {
 
     {
       sequelize,
-      modelName: "users",
+      modelName: "Users",
       freezeTableName: true,
       timestamps: false,
     }
