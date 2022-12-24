@@ -1,26 +1,13 @@
 const User = require("../models/users");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const AuthConfig = require("../config/authConfig.js");
 
-const generateUserToken = (user) => {
-  return jwt.sign(
-    {
-      userEmail: user.email,
-      role: user.role,
-      state: user.state,
-    },
-    AuthConfig.secret,
-    { expiresIn: AuthConfig.expires }
-  );
-};
-
-const hashPassword = (password) => {
-  return bcrypt.hashSync(password, Number.parseInt(AuthConfig.rounds || 10));
-};
+//AuthServices:
+const {
+  generateUserToken,
+  hashPassword,
+  passwordMatches,
+} = require("../services/authServices");
 
 const AuthController = {};
-
 //Sign In
 AuthController.signIn = async (req, res) => {
   let data = req.body;
@@ -50,7 +37,6 @@ AuthController.signIn = async (req, res) => {
 };
 
 //Log In
-
 AuthController.logIn = async (req, res) => {
   try {
     let data = req.body;
@@ -61,11 +47,8 @@ AuthController.logIn = async (req, res) => {
         message: "There is no user registered with that credentials",
       });
     }
-    const validPassword = await bcrypt.compareSync(
-      data.password,
-      user.password
-    );
-    if (!validPassword) {
+    passwordMatches(data.password, user.password);
+    if (!passwordMatches) {
       res.status(401).send({
         success: true,
         message: "Incorrect email or password",
