@@ -9,7 +9,7 @@ const UserController = require("../controllers/userController");
 //Update my User
 router.put("/:email/update", UserController.updateUser);
 //Delete My Account  // (admin can also errase whoever he wants)
-// router.delete("/:email/delete", UserController.deleteUser);
+router.delete("/:email/delete", UserController.deleteUser);
 
 // //Admin:
 // //User:

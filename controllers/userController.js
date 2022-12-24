@@ -63,4 +63,34 @@ UserController.updateUser = async (req, res) => {
   }
 };
 
+//Delete My account
+
+UserController.deleteUser = async (req, res) => {
+  try {
+    let data = req.params;
+    let response = await User.destroy({
+      where: { email: data.email },
+    });
+
+    if (response) {
+      res.status(201).send({
+        success: true,
+        message: "User has been deleted",
+      });
+    }
+    if (!response) {
+      res.status(201).send({
+        success: true,
+        message: "User hasn't been deleted",
+      });
+    }
+  } catch (error) {
+    res.status(501).send({
+      success: false,
+      message: "Something went wrong on Deleting User",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = UserController;
