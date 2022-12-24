@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const AuthRoutes = require("./views/AuthsRoutes");
-const UserRoutes = require("./views/UsersRoutes");
-const WalletRoutes = require("./views/RolesRoutes");
-const TransactionRoutes = require("./views/RolesRoutes");
+const AuthRoutes = require("./views/AuthRoutes");
+const UserRoutes = require("./views/UserRoutes");
+const WalletRoutes = require("./views/WalletRoutes");
+const TransactionRoutes = require("./views/TransactionRoutes");
 
 router.use("/auth", AuthRoutes);
 router.use("/user", UserRoutes);
