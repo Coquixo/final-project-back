@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const db = require("./db/db.js");
-const router = require("./router");
+// const router = require("./router");
 // require("./models/associations");
 
 const PORT = 5000;
