@@ -48,6 +48,7 @@ AuthController.logIn = async (req, res) => {
       });
     }
     passwordMatches(data.password, user.password);
+
     if (!passwordMatches) {
       res.status(401).send({
         success: true,

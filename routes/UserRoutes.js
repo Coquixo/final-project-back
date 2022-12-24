@@ -9,21 +9,21 @@ const UserController = require("../controllers/userController");
 //Update my User
 router.put("/:email/update", UserController.updateUser);
 //Delete My Account  // (admin can also errase whoever he wants)
-router.delete("/:email/delete", UserController.deleteUser);
+// router.delete("/:email/delete", UserController.deleteUser);
 
-//Admin:
-//User:
+// //Admin:
+// //User:
 
-//Get all Users
-router.get("/all", UserController.getAllUsers);
+// //Get all Users
+// router.get("/all", UserController.getAllUsers);
 
-//Status:
+// //Status:
 
-//Check a Users Status
-router.get("/:email/check", UserController.checkUserStatus);
-//Change a Users Status (Disable)
-router.put("/:email/disable", UserController.disableUser);
-//Change a Users Status (Enable)
-router.put("/:email/enable", UserController.enableUser);
+// //Check a Users Status
+// router.get("/:email/check", UserController.checkUserStatus);
+// //Change a Users Status (Disable)
+// router.put("/:email/disable", UserController.disableUser);
+// //Change a Users Status (Enable)
+// router.put("/:email/enable", UserController.enableUser);
 
 module.exports = router;
