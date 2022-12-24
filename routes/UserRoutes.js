@@ -1,4 +1,5 @@
 const express = require("express");
+const { changeUserStatus } = require("../controllers/userController");
 const router = express.Router();
 
 const UserController = require("../controllers/userController");
@@ -20,10 +21,8 @@ router.get("/all", UserController.getAllUsers);
 // //Status:
 
 // //Check a Users Status
-router.get("/:email/check", UserController.checkUserStatus);
-// //Change a Users Status (Disable)
-// router.put("/:email/disable", UserController.disableUser);
-// //Change a Users Status (Enable)
-// router.put("/:email/enable", UserController.enableUser);
+router.get("/:email/status", UserController.checkUserStatus);
+// Change Someones State
+router.put("/:email/status", UserController.changeUserStatus);
 
 module.exports = router;

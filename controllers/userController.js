@@ -116,4 +116,28 @@ UserController.checkUserStatus = async (req, res) => {
 
 //Admmin: Change a user Status
 
+UserController.changeUserStatus = async (req, res) => {
+  try {
+    let target = req.params.email;
+    let newStatus = req.body.state;
+    await User.update(
+      {
+        state: newStatus,
+      },
+      { where: { email: target } }
+    );
+
+    res.status(201).send({
+      success: true,
+      message: `${target} status changed to ${newStatus}`,
+    });
+  } catch (error) {
+    res.status(501).send({
+      success: false,
+      message: "Something went wrong on udpdating someones user State",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = UserController;
