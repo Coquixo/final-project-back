@@ -20,7 +20,7 @@ router.get("/all", UserController.getAllUsers);
 // //Status:
 
 // //Check a Users Status
-// router.get("/:email/check", UserController.checkUserStatus);
+router.get("/:email/check", UserController.checkUserStatus);
 // //Change a Users Status (Disable)
 // router.put("/:email/disable", UserController.disableUser);
 // //Change a Users Status (Enable)

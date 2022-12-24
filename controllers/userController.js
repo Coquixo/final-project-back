@@ -93,4 +93,27 @@ UserController.deleteUser = async (req, res) => {
   }
 };
 
+//Admin: Check user Status
+UserController.checkUserStatus = async (req, res) => {
+  try {
+    let target = req.params.email;
+    let user = await User.findByPk(target);
+
+    res.status(201).send({
+      success: true,
+      message: "Bringing User State Successffully",
+      email: user.email,
+      state: user.state,
+    });
+  } catch (error) {
+    res.status(501).send({
+      success: false,
+      message: "Something went wrong on checking someones user State",
+      error: error.message,
+    });
+  }
+};
+
+//Admmin: Change a user Status
+
 module.exports = UserController;
