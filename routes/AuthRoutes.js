@@ -5,7 +5,7 @@ const AuthController = require("../controllers/authControllers");
 
 //NoAdmin // Admin
 //Login:
-// router.post("/login", AuthController.logIn);
+router.post("/login", AuthController.logIn);
 //NoAdmin
 //SignIn
 router.post("/signin", AuthController.signIn);
