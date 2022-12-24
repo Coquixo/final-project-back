@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const db = require("./db/db.js");
-// const router = require("./router");
+const router = require("./router");
 // require("./models/associations");
 
 const PORT = 5000;
@@ -9,7 +9,7 @@ const PORT = 5000;
 // //MiddleWares:
 app.use(express.json());
 // //Routes
-// app.use(router);
+app.use(router);
 
 //Conection to the dataBase
 app.listen(PORT, () => {
