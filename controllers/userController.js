@@ -1,16 +1,28 @@
 const User = require("../models/users");
+
+//AuthServices:
 const { hashPassword, generateUserToken } = require("../services/authServices");
 
 const UserController = {};
 
-//Functions
-
-//Controllers
-
+//Update User
 UserController.updateUser = async (req, res) => {
   let data = req.body;
   try {
     let newPassword = hashPassword(data.password);
+
+    // passwordMatches(data.password, user.password)
+    // if (!passwordMatches) {
+    //     res.status(401).send({
+    //       success: true,
+    //       message: "Incorrect email or password",
+    //       data: user.password,
+    //       data2: password,
+    //     });
+    //   }
+
+    //We trying to update only if you veryfied your password
+
     let user = await User.update(
       {
         name: data.name,
