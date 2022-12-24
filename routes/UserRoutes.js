@@ -15,7 +15,7 @@ router.put("/:email/update", UserController.updateUser);
 // //User:
 
 // //Get all Users
-// router.get("/all", UserController.getAllUsers);
+router.get("/all", UserController.getAllUsers);
 
 // //Status:
 
