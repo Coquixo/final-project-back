@@ -90,14 +90,6 @@ module.exports = {
           key: "id",
         },
       },
-      wallet: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: "Wallets",
-          key: "id",
-        },
-      },
     });
   },
   async down(queryInterface, Sequelize) {

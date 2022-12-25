@@ -19,7 +19,6 @@ module.exports = {
           address: "Calle ejemplo numero 100",
           state: 1,
           role: 1,
-          wallet: 1,
         },
         {
           id: 2,
@@ -34,7 +33,6 @@ module.exports = {
           address: "Calle ejemplo numero 100",
           state: 1,
           role: 1,
-          wallet: 2,
         },
         {
           id: 3,
@@ -49,7 +47,6 @@ module.exports = {
           address: "Calle ejemplo numero 100",
           state: 1,
           role: 2,
-          wallet: 3,
         },
         {
           id: 4,
@@ -64,7 +61,6 @@ module.exports = {
           address: "Calle ejemplo numero 100",
           state: 2,
           role: 1,
-          wallet: 4,
         },
       ],
       {}

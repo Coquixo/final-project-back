@@ -13,12 +13,18 @@ module.exports = {
       balance: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "Users",
+          key: "id",
+        },
       },
       card_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
         validate: {
           len: [1, 55],
         },

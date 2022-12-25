@@ -8,28 +8,33 @@ module.exports = {
       [
         {
           id: 1,
-          balance: 2555,
+          user_id: 1,
           card_id: 1,
+          balance: 2555,
         },
         {
           id: 2,
-          balance: 2555,
+          user_id: 1,
           card_id: 2,
+          balance: 2555,
         },
         {
           id: 3,
-          balance: 2555,
+          user_id: 2,
           card_id: 1,
+          balance: 2555,
         },
         {
           id: 4,
-          balance: 2555,
+          user_id: 3,
           card_id: 2,
+          balance: 2555,
         },
         {
           id: 5,
-          balance: 2555,
+          user_id: 4,
           card_id: 2,
+          balance: 2555,
         },
       ],
       {}

@@ -11,20 +11,26 @@ Wallets.init(
       allowNull: false,
       unique: true,
     },
-    balance: {
+
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: "Users",
+        key: "id",
+      },
     },
     card_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        len: [1, 55],
-      },
       references: {
         model: "Cards",
         key: "id",
       },
+    },
+    balance: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
   },
   {

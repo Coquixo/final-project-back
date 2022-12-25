@@ -9,10 +9,10 @@ const Transactions = require("./transactions");
 Users.hasMany(Wallets);
 Wallets.belongsTo(Users);
 
-//Relation 1 to N Wallets => Cards
+//Relation 1 to N Cards => Wallets
 
-Wallets.hasMany(Cards);
-Cards.belongsTo(Wallets);
+Cards.hasMany(Wallets);
+Wallets.belongsTo(Cards);
 
 //Relation 1 to 1 States => Users
 

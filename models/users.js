@@ -92,14 +92,6 @@ Users.init(
         key: "id",
       },
     },
-    wallet: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: "Wallets",
-        key: "id",
-      },
-    },
   },
 
   {
