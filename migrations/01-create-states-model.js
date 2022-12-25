@@ -10,7 +10,7 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      name_state: {
+      status: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,

@@ -13,7 +13,7 @@ States.init(
       allowNull: false,
       unique: true,
     },
-    name_state: {
+    status: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
