@@ -39,7 +39,7 @@ Transactions.init(
   {
     sequelize,
     modelName: "Transactions",
-    timestamps: true,
+    timestamps: { createdAt: true, updatedAt: false },
     freezeTableName: true,
   }
 );
