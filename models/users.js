@@ -9,10 +9,10 @@ Users.init(
       type: DataTypes.INTEGER,
       autoIncrement: true,
       allowNull: false,
+      primaryKey: true,
     },
     email: {
       type: DataTypes.STRING,
-      primaryKey: true,
       allowNull: false,
       unique: true,
       validate: {
