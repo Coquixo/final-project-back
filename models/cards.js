@@ -12,7 +12,7 @@ Cards.init(
       allowNull: false,
       unique: true,
     },
-    name_card: {
+    card: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
