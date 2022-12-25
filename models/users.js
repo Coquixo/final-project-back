@@ -81,7 +81,7 @@ Users.init(
       allowNull: false,
       references: {
         model: "States",
-        key: "id_state",
+        key: "id",
       },
     },
     role: {
@@ -89,7 +89,7 @@ Users.init(
       allowNull: false,
       references: {
         model: "Roles",
-        key: "id_role",
+        key: "id",
       },
     },
     wallet: {
@@ -97,7 +97,7 @@ Users.init(
       allowNull: true,
       references: {
         model: "Wallets",
-        key: "id_wallet",
+        key: "id",
       },
     },
   },

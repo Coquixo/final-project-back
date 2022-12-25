@@ -5,20 +5,20 @@
 
 // //NoAdmin
 // //Get Balance from a wallet //Admin also can (other Wallet)
-// router.get("/:id_wallet/:email", WalletController.getWalletBalance);
+// router.get("/:id/:email", WalletController.getWalletBalance);
 // //Create a new Wallet Account with card selected
 // router.post(
-//   "/:id_wallet/:email/:card/create",
+//   "/:id/:email/:card/create",
 //   WalletController.createNewWallet
 // );
 // //Insert money on a wallet //Admin also can (other Wallet)
 // router.put(
-//   "/:id_wallet/:email/:card/:ammount/addMoney",
+//   "/:id/:email/:card/:ammount/addMoney",
 //   WalletController.addMoneyInWallet
 // );
 // //Withdraw money from a wallet //Admin also can(other Wallet)
 // router.put(
-//   "/:id_wallet/:email/:card/:ammount/withdrawMoney",
+//   "/:id/:email/:card/:ammount/withdrawMoney",
 //   WalletController.withdrawMoneyFromWallet
 // );
 

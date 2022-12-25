@@ -13,14 +13,14 @@ module.exports = (sequelize, DataTypes) => {
   }
   Roles.init(
     {
-      id_state: {
+      id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
         unique: true,
       },
-      name_role: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,

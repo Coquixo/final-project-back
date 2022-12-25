@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Cards.init(
     {
-      id_card: {
+      id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,

@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Wallets.init(
     {
-      id_wallet: {
+      id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         references: {
           model: "Cards",
-          key: "id_card",
+          key: "id",
         },
       },
     },
