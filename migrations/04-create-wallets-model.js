@@ -10,7 +10,7 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      balance_wallet: {
+      balance: {
         type: Sequelize.INTEGER,
         allowNull: false,
         unique: true,

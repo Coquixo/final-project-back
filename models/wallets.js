@@ -11,15 +11,13 @@ Wallets.init(
       allowNull: false,
       unique: true,
     },
-    balance_wallet: {
+    balance: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
     },
     card_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
       validate: {
         len: [1, 55],
       },
