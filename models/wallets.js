@@ -1,48 +1,39 @@
 "use strict";
-const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
-  class Wallets extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  Wallets.init(
-    {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
-        unique: true,
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../db/db");
+class Wallets extends Model {}
+Wallets.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+      unique: true,
+    },
+    balance_wallet: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+    },
+    card_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+      validate: {
+        len: [1, 55],
       },
-      balance_wallet: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        unique: true,
-      },
-      card_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        unique: true,
-        validate: {
-          len: [1, 55],
-        },
-        references: {
-          model: "Cards",
-          key: "id",
-        },
+      references: {
+        model: "Cards",
+        key: "id",
       },
     },
-    {
-      sequelize,
-      modelName: "Wallets",
-      freezeTableName: true,
-    }
-  );
-  return Wallets;
-};
+  },
+  {
+    sequelize,
+    modelName: "Wallets",
+    freezeTableName: true,
+  }
+);
+
+module.exports = Wallets;
