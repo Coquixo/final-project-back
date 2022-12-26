@@ -14,12 +14,12 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      user_id: {
-        type: Sequelize.INTEGER,
+      user_email: {
+        type: Sequelize.STRING,
         allowNull: false,
         references: {
           model: "Users",
-          key: "id",
+          key: "email",
         },
       },
       card_id: {

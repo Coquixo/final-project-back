@@ -12,12 +12,12 @@ Wallets.init(
       unique: true,
     },
 
-    user_id: {
-      type: DataTypes.INTEGER,
+    user_email: {
+      type: DataTypes.STRING,
       allowNull: false,
       references: {
         model: "Users",
-        key: "id",
+        key: "email",
       },
     },
     card_id: {
