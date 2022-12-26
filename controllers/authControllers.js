@@ -55,16 +55,10 @@ AuthController.logIn = async (req, res) => {
     const user = await User.findOne({ where: { email: data.email } });
     let passMatch = await passwordMatches(data.password, user.password);
     if (!user) {
-      res.status(401).send({
-        success: true,
-        message: "There is no user registered with that credentials",
-      });
+      throw new Error("There is no user registered with that credentials");
     }
     if (!passMatch) {
-      res.status(401).send({
-        success: true,
-        message: "Incorrect email or password",
-      });
+      throw new Error("Incorrect email or password");
     }
     res.status(202).send({
       success: true,
@@ -84,7 +78,7 @@ AuthController.logIn = async (req, res) => {
   } catch (error) {
     res.status(501).send({
       success: false,
-      message: "Invalid email/password",
+      message: "Something went wrong on LogIn",
       error: error.message,
     });
   }
