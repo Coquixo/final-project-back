@@ -9,7 +9,8 @@ module.exports = {
         {
           id: 1,
           email: "coquixo98@gmail.com",
-          password: 1234,
+          password:
+            "$2b$10$5cqMXu1TMM.EcpPvY9nxr.rUahUfMVeQJeWOpe4igMfY52KiO0zTu",
           name: "Alex",
           surname: "Lopez",
           phone: "666999333",
@@ -23,7 +24,8 @@ module.exports = {
         {
           id: 2,
           email: "coquixo99@gmail.com",
-          password: 1234,
+          password:
+            "$2b$10$5cqMXu1TMM.EcpPvY9nxr.rUahUfMVeQJeWOpe4igMfY52KiO0zTu",
           name: "Marcelo",
           surname: "Quiroga",
           phone: "666999333",
@@ -37,7 +39,8 @@ module.exports = {
         {
           id: 3,
           email: "coquixo100@gmail.com",
-          password: 1234,
+          password:
+            "$2b$10$5cqMXu1TMM.EcpPvY9nxr.rUahUfMVeQJeWOpe4igMfY52KiO0zTu",
           name: "Alex",
           surname: "Lopez",
           phone: "666999333",
@@ -51,7 +54,8 @@ module.exports = {
         {
           id: 4,
           email: "coquixo101@gmail.com",
-          password: 1234,
+          password:
+            "$2b$10$5cqMXu1TMM.EcpPvY9nxr.rUahUfMVeQJeWOpe4igMfY52KiO0zTu",
           name: "Alex",
           surname: "Lopez",
           phone: "666999333",
