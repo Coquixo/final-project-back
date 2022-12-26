@@ -1,7 +1,7 @@
-// const express = require("express");
-// const router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-// const TransactionController = require("../controllers/transactionControllers");
+const TransactionController = require("../controllers/transactionControllers");
 
 // //Not Admin
 // //Get every transaction from User //Admin also can
@@ -13,4 +13,4 @@
 // //Get All transactions from every User
 // router.get("/moves", TransactionController.getEveryTransaction);
 
-// module.exports = router;
+module.exports = router;

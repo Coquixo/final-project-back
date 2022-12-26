@@ -24,6 +24,7 @@ Roles.init(
     sequelize,
     modelName: "Roles",
     freezeTableName: true,
+    timestamps: false,
   }
 );
 

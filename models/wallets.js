@@ -37,6 +37,7 @@ Wallets.init(
     sequelize,
     modelName: "Wallets",
     freezeTableName: true,
+    timestamps: false,
   }
 );
 

@@ -26,6 +26,7 @@ States.init(
     sequelize,
     modelName: "States",
     freezeTableName: true,
+    timestamps: false,
   }
 );
 

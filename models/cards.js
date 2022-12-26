@@ -25,6 +25,7 @@ Cards.init(
     sequelize,
     modelName: "Cards",
     freezeTableName: true,
+    timestamps: false,
   }
 );
 
