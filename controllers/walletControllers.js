@@ -10,10 +10,16 @@ WalletsController.getWalletBalance = async (req, res) => {
       where: { user_email: data.email, card_id: data.card },
     });
 
+    const { user_email, card_id, balance } = wallet;
+
     res.status(201).send({
       success: true,
       message: "Bringing wallet data successffully",
-      data: wallet,
+      data: {
+        email: user_email,
+        card: card_id,
+        balance: balance,
+      },
     });
   } catch (error) {
     res.status(501).send({
