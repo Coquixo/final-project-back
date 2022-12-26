@@ -29,7 +29,7 @@ const assertIsValidEmail = (email) => {
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const isValid = email.match(emailRegex);
   if (!isValid) {
-    return false;
+    return "No valid email format. example@gmail.com";
   }
   return true;
 };
@@ -39,7 +39,7 @@ const assertIsUniqueEmail = async (email) => {
     where: { email: email },
   });
   if (user) {
-    return false;
+    return "This email is already in use.";
   }
   return true;
 };
