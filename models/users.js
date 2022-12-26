@@ -14,7 +14,10 @@ Users.init(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: {
+        args: true,
+        msg: "Email is already in use",
+      },
       validate: {
         len: [1, 50],
         isEmail: true,

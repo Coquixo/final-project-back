@@ -21,8 +21,8 @@ const hashPassword = (password) => {
 };
 
 //Check if Password Matches
-const passwordMatches = (password, savedPassword) => {
-  bcrypt.compareSync(password, savedPassword);
+const passwordMatches = async (password, savedPassword) => {
+  return await bcrypt.compareSync(password, savedPassword);
 };
 
 module.exports = { generateUserToken, hashPassword, passwordMatches };

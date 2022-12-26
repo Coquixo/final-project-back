@@ -2,6 +2,7 @@ const User = require("../models/users");
 const {
   assertIsValidPassword,
   assertIsValidEmail,
+  assertEmailIsUnique,
 } = require("../services/errorManage");
 
 //AuthServices:
@@ -18,6 +19,7 @@ AuthController.signIn = async (req, res) => {
   try {
     await assertIsValidPassword(data.password);
     await assertIsValidEmail(data.email);
+    await assertEmailIsUnique(data.email);
 
     let password = hashPassword(data.password);
     let user = await User.create({
@@ -45,26 +47,25 @@ AuthController.signIn = async (req, res) => {
 
 //Log In
 AuthController.logIn = async (req, res) => {
+  let data = req.body;
   try {
-    let data = req.body;
+    await assertIsValidPassword(data.password);
+    await assertIsValidEmail(data.email);
+
     const user = await User.findOne({ where: { email: data.email } });
+    let passMatch = await passwordMatches(data.password, user.password);
     if (!user) {
       res.status(401).send({
         success: true,
         message: "There is no user registered with that credentials",
       });
     }
-    passwordMatches(data.password, user.password);
-
-    if (!passwordMatches) {
+    if (!passMatch) {
       res.status(401).send({
         success: true,
         message: "Incorrect email or password",
-        data: user.password,
-        data2: password,
       });
     }
-
     res.status(202).send({
       success: true,
       message: "User logged successfully",
@@ -81,7 +82,8 @@ AuthController.logIn = async (req, res) => {
       token: generateUserToken(user),
     });
   } catch (error) {
-    res.status(401).send({
+    res.status(501).send({
+      success: false,
       message: "Invalid email/password",
       error: error.message,
     });

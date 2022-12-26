@@ -34,10 +34,21 @@ const assertIsValidEmail = (email) => {
   return true;
 };
 
+const assertEmailIsUnique = async (email) => {
+  // validate email is unique
+  const user = await Users.findOne({
+    where: { email: email },
+  });
+  if (user) {
+    throw new Error("Email is already registered");
+  }
+};
+
 const assertIsAdmin = (user) => {};
 
 module.exports = {
   assertIsValidPassword,
   assertIsValidEmail,
+  assertEmailIsUnique,
   assertIsAdmin,
 };
