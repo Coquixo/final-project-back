@@ -7,7 +7,7 @@ WalletsController.getWalletBalance = async (req, res) => {
   let data = req.params;
   try {
     let wallet = await Wallets.findOne({
-      where: { user_id: data.id, card_id: data.card },
+      where: { user_id: data.user, card_id: data.card },
     });
 
     const { user_id, card_id, balance } = wallet;
