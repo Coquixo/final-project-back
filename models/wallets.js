@@ -12,16 +12,18 @@ Wallets.init(
       unique: true,
     },
 
-    user_email: {
-      type: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      primaryKey: true,
       references: {
         model: "Users",
-        key: "email",
+        key: "id",
       },
     },
     card_id: {
       type: DataTypes.INTEGER,
+
       allowNull: false,
       references: {
         model: "Cards",
