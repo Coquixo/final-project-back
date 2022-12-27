@@ -43,9 +43,40 @@ WalletsController.createNewWallet = async (req, res) => {
       message: "Something went wrog on createNewWallet",
       error: error.message,
     });
-    console.log(error.message);
-    console.log(error);
   }
 };
+
+WalletsController.addMoneyInWallet = async (req, res) => {
+  let data = req.params;
+  console.log(data.action);
+  try {
+    if (data.action === "add") {
+    }
+    if (data.action === "withdraw") {
+    }
+    let wallet = await Wallets.update(
+      {
+        balance: data.ammount,
+      },
+      {
+        where: { id: data.id },
+      }
+    );
+
+    res.status(201).send({
+      success: true,
+      message: "Balance updated successffully",
+      newBalance: wallet,
+    });
+  } catch (error) {
+    res.status(501).send({
+      success: false,
+      message: "Something went wrong in addMoneyInWallet",
+      error: error.meessage,
+    });
+  }
+};
+
+WalletsController.withdrawMoneyFromWallet = async (req, res) => {};
 
 module.exports = WalletsController;
