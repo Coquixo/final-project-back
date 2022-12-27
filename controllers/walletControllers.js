@@ -30,4 +30,29 @@ WalletsController.getWalletBalance = async (req, res) => {
   }
 };
 
+WalletsController.createNewWallet = async (req, res) => {
+  let data = req.params;
+  try {
+    let wallet = await Wallets.create({
+      user_id: data.user,
+      card_id: data.card,
+      balance: 0,
+    });
+
+    res.status(201).send({
+      success: true,
+      meessage: "Created a wallet successfully",
+      data: wallet,
+    });
+  } catch (error) {
+    res.status(501).send({
+      success: false,
+      message: "Something went wrog on createNewWallet",
+      error: error.message,
+    });
+    console.log(error.message);
+    console.log(error);
+  }
+};
+
 module.exports = WalletsController;

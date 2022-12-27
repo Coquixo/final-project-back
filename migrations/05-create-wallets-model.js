@@ -10,13 +10,10 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      balance: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        primaryKey: true,
         references: {
           model: "Users",
           key: "id",
@@ -25,13 +22,15 @@ module.exports = {
       card_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        validate: {
-          len: [1, 55],
-        },
+        primaryKey: true,
         references: {
           model: "Cards",
           key: "id",
         },
+      },
+      balance: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
     });
   },

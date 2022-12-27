@@ -7,7 +7,7 @@ const WalletController = require("../controllers/walletControllers");
 // //Get Balance from a wallet //Admin also can (other Wallet)
 router.get("/:user/:card", WalletController.getWalletBalance);
 // //Create a new Wallet Account with card selected
-// router.post("/:id/:email/:card/create", WalletController.createNewWallet);
+router.post("/:user/:card", WalletController.createNewWallet);
 // //Insert money on a wallet //Admin also can (other Wallet)
 // router.put(
 //   "/:id/:email/:card/:ammount/addMoney",

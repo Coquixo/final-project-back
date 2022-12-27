@@ -23,8 +23,8 @@ Wallets.init(
     },
     card_id: {
       type: DataTypes.INTEGER,
-
       allowNull: false,
+      primaryKey: true,
       references: {
         model: "Cards",
         key: "id",
