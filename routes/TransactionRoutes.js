@@ -5,7 +5,7 @@ const TransactionController = require("../controllers/transactionControllers");
 
 // //Not Admin
 // //Get every transaction from User //Admin also can
-// router.get("/moves/:email", TransactionController.getUserTransaction);
+router.get("/:user_id", TransactionController.getUserTransactions);
 // //Send money from User1 to User2
 // router.post("/moves/:email/:email/send", TransactionController.sendMoney);
 

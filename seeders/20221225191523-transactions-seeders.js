@@ -34,6 +34,13 @@ module.exports = {
           quantity: 213,
           createdAt: "2022-12-25 22:57:00",
         },
+        {
+          id: 5,
+          sender_wallet: "1",
+          addressee_wallet: "2",
+          quantity: 45165,
+          createdAt: "2022-12-25 22:57:00",
+        },
       ],
       {}
     );
