@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const generateUserToken = (user) => {
   return jwt.sign(
     {
-      userEmail: user.email,
+      email: user.email,
       role: user.role,
       state: user.state,
     },
