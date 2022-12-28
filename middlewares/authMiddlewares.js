@@ -1,20 +1,24 @@
-const isSameUser = () => async (req, res, next) => {
-  inputEmail = req.params.email || req.body.email;
-  let authorization = req.headers.authorization;
-  const token = authorization.substring(7, authorization.lenght);
+const getTokenValues = (auth) => {
+  const token = auth.substring(7, auth.lenght);
 
   function parseJwt(token) {
     return JSON.parse(Buffer.from(token.split(".")[1], "base64").toString());
   }
-  const currentEmail = parseJwt(token).email;
+  return parseJwt(token);
+};
 
-  if (inputEmail === currentEmail) {
+const isSameUser = () => async (req, res, next) => {
+  let auth = req.headers.authorization;
+  let inputEmail = req.params.email;
+  let tokenData = getTokenValues(auth);
+
+  if (inputEmail === tokenData.email) {
     next();
   } else {
     res.status(403).json({ message: "You have no access" });
   }
-  console.log(token);
-  console.log(currentEmail);
 };
+
+const isAdmin = () => async (req, res, next) => {};
 
 module.exports = { isSameUser };
