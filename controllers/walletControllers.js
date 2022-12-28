@@ -1,4 +1,5 @@
 const Wallets = require("../models/wallets");
+const { checkAction } = require("../services/walletServices");
 const WalletsController = {};
 
 // Get Balance from a Wallet
@@ -46,27 +47,30 @@ WalletsController.createNewWallet = async (req, res) => {
   }
 };
 
-WalletsController.addMoneyInWallet = async (req, res) => {
+WalletsController.addOrWithdrawMoneyInWallet = async (req, res) => {
   let data = req.params;
-  console.log(data.action);
   try {
-    if (data.action === "add") {
+    let newAction = await checkAction(data.action);
+    if (newAction == true) {
+      let wallet = await Wallets.increment(
+        {
+          balance: data.ammount,
+        },
+        { where: { id: data.id } }
+      );
     }
-    if (data.action === "withdraw") {
+    if (newAction == false) {
+      let wallet = await Wallets.decrement(
+        {
+          balance: data.ammount,
+        },
+        { where: { id: data.id } }
+      );
     }
-    let wallet = await Wallets.update(
-      {
-        balance: data.ammount,
-      },
-      {
-        where: { id: data.id },
-      }
-    );
 
     res.status(201).send({
       success: true,
       message: "Balance updated successffully",
-      newBalance: wallet,
     });
   } catch (error) {
     res.status(501).send({

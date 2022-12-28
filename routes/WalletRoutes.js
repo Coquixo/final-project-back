@@ -3,17 +3,18 @@ const router = express.Router();
 
 const WalletController = require("../controllers/walletControllers");
 
-// //NoAdmin
-// //Get Balance from a wallet //Admin also can (other Wallet)
+//NoAdmin
+//Get Balance from a wallet //Admin also can (other Wallet)
 router.get("/:user/:card", WalletController.getWalletBalance);
-// //Create a new Wallet Account with card selected
+//Create a new Wallet Account with card selected
 router.post("/:user/:card", WalletController.createNewWallet);
-// //Insert money on a wallet //Admin also can (other Wallet)
-router.put("/:id/:ammount/:action", WalletController.addMoneyInWallet);
-// //Withdraw money from a wallet //Admin also can(other Wallet)
+//Insert or withdraw money in or from a wallet
+//id= wallet's id
+//ammount= quantity of money you want to insert or withdraw
+//action= add / withdraw
 router.put(
-  "/:id/:ammount/withdrawMoney",
-  WalletController.withdrawMoneyFromWallet
+  "/:id/:ammount/:action",
+  WalletController.addOrWithdrawMoneyInWallet
 );
 
 module.exports = router;
