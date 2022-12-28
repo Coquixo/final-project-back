@@ -17,6 +17,6 @@ router.post(
 
 //Admin
 //Get All transactions from every User
-// router.get("/moves", TransactionController.getEveryTransaction);
+router.get("/", TransactionController.getEveryTransaction);
 
 module.exports = router;

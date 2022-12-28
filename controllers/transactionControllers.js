@@ -2,6 +2,25 @@ const Transaction = require("../models/transactions");
 
 const TransactionController = () => {};
 
+TransactionController.getEveryTransaction = async (req, res) => {
+  try {
+    let transaction = await Transaction.findAll();
+
+    res.status(201).send({
+      success: true,
+      message: "Bringing all transactions data successffully",
+      data: transaction,
+    });
+  } catch (error) {
+    res.status(501).send({
+      success: false,
+      message: "Something went wrong on getEveryTransaction",
+      error: error.message,
+    });
+  }
+};
+
+//Find someones all transactions
 TransactionController.getUserTransactions = async (req, res) => {
   try {
     let data = req.params;
@@ -12,7 +31,7 @@ TransactionController.getUserTransactions = async (req, res) => {
     });
     res.status(201).send({
       success: true,
-      message: "Bringing transaction data successffully",
+      message: "Bringing users transactions data successffully",
       data: transaction,
     });
   } catch (error) {
@@ -24,6 +43,7 @@ TransactionController.getUserTransactions = async (req, res) => {
   }
 };
 
+//Creates a new transaction
 TransactionController.createNewTransaction = async (req, res) => {
   let data = req.params;
   try {
