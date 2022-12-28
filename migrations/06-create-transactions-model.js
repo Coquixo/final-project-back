@@ -10,20 +10,20 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      sender: {
-        type: Sequelize.STRING,
+      sender_wallet: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Users",
-          key: "email",
+          model: "Wallets",
+          key: "id",
         },
       },
-      addressee: {
-        type: Sequelize.STRING,
+      addressee_wallet: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Users",
-          key: "email",
+          model: "Wallets",
+          key: "id",
         },
       },
       quantity: {

@@ -81,6 +81,4 @@ WalletsController.addOrWithdrawMoneyInWallet = async (req, res) => {
   }
 };
 
-WalletsController.withdrawMoneyFromWallet = async (req, res) => {};
-
 module.exports = WalletsController;

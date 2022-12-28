@@ -12,20 +12,20 @@ Transactions.init(
       allowNull: false,
       unique: true,
     },
-    sender: {
-      type: DataTypes.STRING,
+    sender_wallet: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Users",
-        key: "email",
+        model: "Wallets",
+        key: "id",
       },
     },
-    addressee: {
-      type: DataTypes.STRING,
+    addressee_wallet: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Users",
-        key: "email",
+        model: "Wallets",
+        key: "id",
       },
     },
     quantity: {
