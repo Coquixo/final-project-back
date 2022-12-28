@@ -7,7 +7,7 @@ const TransactionController = require("../controllers/transactionControllers");
 //Get every transaction from User //Admin also can
 router.get("/:user_id", TransactionController.getUserTransactions);
 //Send money from User1 to User2
-// router.post("/moves/:email/:email/send", TransactionController.sendMoney);
+//When we send money we launch add/withdraw money from wallet controllers and create a new transaction.
 
 //Create a new transaction
 router.post(
