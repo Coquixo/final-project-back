@@ -25,13 +25,13 @@
 
 ---
 
-## Relations
+### Relations
 
 ![img](/images/Database.png)
 
 ---
 
-## Environment Install
+### Environment Install
 
 > Steps:
 
@@ -184,7 +184,7 @@ Get all data(GET)
 
 http://localhost:5000/card
 
-## Technologies, dependencies and libraries
+### Technologies, dependencies and libraries
 
 - [JavaScript](https://www.javascript.com/)
 - [Node](https://nodejs.org/en/)
@@ -198,14 +198,16 @@ http://localhost:5000/card
 
 ---
 
-## Authors
+### Authors
 
-> **Alex Marcelo López Quiroga** > [Github](https://github.com/Coquixo)🚀
+> **Alex Marcelo López Quiroga**
+
+> [Github](https://github.com/Coquixo)🚀
 > [LinkedIn](https://www.linkedin.com/in/alex-marcelo-lopez-quiroga5555/)🍀
 
 ---
 
-## Badges
+### Badges
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
