@@ -75,65 +75,113 @@ _env example_
 ### ENDPOINTS LIST
 
 **Host example:**
+
 http://localhost:5000/
 
 **Routes:**
+
 http://localhost:5000/auth
+
 http://localhost:5000/user
+
 http://localhost:5000/state
+
 http://localhost:5000/role
+
 http://localhost:5000/card
+
 http://localhost:5000/wallet
+
 http://localhost:5000/move
 
 **Auth:**
+
 LogIn(POST):
+
 http://localhost:5000/auth/login
+
 SignIn(POST):
+
 http://localhost:5000/auth/signin
 
 **User:**
+
 Update my profile(PUT):
+
 http://localhost:5000/user/:email/update
+
 Delete my profile(DELETE):
+
 http://localhost:5000/user/:email/delete
+
 Get all users(GET):
+
 http://localhost:5000/user/all
+
 Get users status(GET)(admin):
+
 http://localhost:5000/user/:email/status
+
 Update users status(PUT)(admin):
+
 http://localhost:5000/user/:email/status
 
 **Wallet:**
+
 Get balance from a wallet(GET)
+
 http://localhost:5000/wallet/:user/:card
+
 Create a new wallet with balance 0(POST)
+
 http://localhost:5000/wallet/:user/:card
+
 ADD or WITHDRAW money in a wallet(PUT)
+
 http://localhost:5000/wallet/:id/:ammount/:action
+
 id: wallet's id
+
 ammount: quantity
+
 action: add / withdraw
 
 **Transaction:**
+
 Get all trasactions data(GET)(ADMIN):
+
 http://localhost:5000/transaction
+
 Get all transactions data from a user(GET):
+
 http://localhost:5000/transaction/:user_id
+
 Create a new transaction(POST):
+
 http://localhost:5000/transaction/:sender/:addressee/:ammount
+
 sender: sender walled id
+
 addressee: addressee wallet id
+
 ammount: quantity(integer)
 
 **States:**
+
 Get all data(GET)
+
 http://localhost:5000/state
+
 **Roles:**
+
 Get all data(GET)
+
 http://localhost:5000/role
+
 **Cards:**
+
 Get all data(GET)
+
 http://localhost:5000/card
 
 ## Technologies, dependencies and libraries
