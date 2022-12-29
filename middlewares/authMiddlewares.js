@@ -30,14 +30,31 @@ const isSameUser = () => async (req, res, next) => {
   }
 };
 
-const isAdmin = (rol) => async (req, res, next) => {
+const isAdmin = () => async (req, res, next) => {
   let auth = req.headers.authorization;
   let tokenData = getTokenValues(auth);
 
-  if (tokenData.role === 1) {
+  if (tokenData.role === 2) {
     res.status(403).json({ message: "You have no access to do that" });
   }
   return next();
 };
 
-module.exports = { isSameUser, isAdmin };
+const statusCheck = () => {
+  let auth = req.headers.authorization;
+  let tokenData = getTokenValues(auth);
+  try {
+    if (tokenData.state === 2) {
+      throw new Error("Your account has been disabled, please contact with us");
+    }
+    return next();
+  } catch (error) {
+    res.status(403).json({
+      success: false,
+      message: "Something went wrong on statusCheck",
+      error: error.message,
+    });
+  }
+};
+
+module.exports = { isSameUser, isAdmin, statusCheck };
