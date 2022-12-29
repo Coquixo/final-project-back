@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const UserController = require("../controllers/userController");
-const { isSameUser } = require("../middlewares/authMiddlewares");
+const { isSameUser, isAdmin } = require("../middlewares/authMiddlewares");
 //NoAdmin:
 //User:
 

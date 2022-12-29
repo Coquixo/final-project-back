@@ -11,14 +11,33 @@ const isSameUser = () => async (req, res, next) => {
   let auth = req.headers.authorization;
   let inputEmail = req.params.email;
   let tokenData = getTokenValues(auth);
+  try {
+    if (tokenData.role === 1) {
+      return next();
+    }
+    console.log(tokenData.role);
 
-  if (inputEmail === tokenData.email) {
-    next();
-  } else {
-    res.status(403).json({ message: "You have no access" });
+    if (inputEmail !== tokenData.email) {
+      throw new Error("You have no access, that's not your profile");
+    }
+    return next();
+  } catch (error) {
+    res.status(403).json({
+      success: false,
+      message: "Something went wrong isSameUSer",
+      error: error.message,
+    });
   }
 };
 
-const isAdmin = () => async (req, res, next) => {};
+const isAdmin = (rol) => async (req, res, next) => {
+  let auth = req.headers.authorization;
+  let tokenData = getTokenValues(auth);
 
-module.exports = { isSameUser };
+  if (tokenData.role === 1) {
+    res.status(403).json({ message: "You have no access to do that" });
+  }
+  return next();
+};
+
+module.exports = { isSameUser, isAdmin };
