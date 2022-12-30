@@ -76,45 +76,28 @@ TransactionController.executeNewTransaction = async (req, res) => {
       const addresseeData = parseInt(data.addressee);
       const ammountData = parseInt(data.ammount);
 
+      Wallet.decrement(
+        { balance: ammountData },
+        {
+          where: { id: senderData },
+        },
+        { transaction: t }
+      );
+      Wallet.increment(
+        { balance: ammountData },
+        { where: { id: addresseeData } },
+        { transaction: t }
+      );
+
       const transaction = await Transaction.create(
         {
+          WalletId: 0,
           sender_wallet: senderData,
           addressee_wallet: addresseeData,
           quantity: ammountData,
         },
         { transaction: t }
       );
-
-      console.log("LLEGA HASTA AQUI");
-
-      const sender = await Wallet.findOne({
-        where: {
-          id: senderData,
-        },
-      });
-      const addressee = await Wallet.findOne({
-        where: {
-          id: addresseeData,
-        },
-      });
-
-      await sender.setShooter(
-        {
-          user_id: senderData,
-          card_id: addresseeData,
-          balance: sender.balance - ammountData,
-        },
-        { transaction: t }
-      );
-      await addressee.setShooter(
-        {
-          user_id: senderData,
-          card_id: addresseeData,
-          balance: addressee.balance + ammountData,
-        },
-        { transaction: t }
-      );
-
       return transaction;
     });
 

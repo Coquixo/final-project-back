@@ -26,5 +26,12 @@ Users.belongsTo(Roles);
 
 //Relation 1 to N Users => Transactions
 
-Wallets.hasMany(Transactions);
-Transactions.belongsTo(Wallets);
+Wallets.hasMany(Transactions, { sourceKey: "id" });
+Transactions.belongsTo(Wallets, {
+  targetKey: "id",
+  foreignKey: "sender_wallet",
+});
+Transactions.belongsTo(Wallets, {
+  targetKey: "id",
+  foreignKey: "addressee_wallet",
+});
