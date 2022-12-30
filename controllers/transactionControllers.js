@@ -45,29 +45,7 @@ TransactionController.getUserTransactions = async (req, res) => {
   }
 };
 
-//Creates a new transaction
-TransactionController.createNewTransaction = async (req, res) => {
-  let data = req.params;
-  try {
-    let transaction = await Transaction.create({
-      sender_wallet: data.sender,
-      addressee_wallet: data.addressee,
-      quantity: data.ammount,
-    });
-    res.status(201).send({
-      success: true,
-      message: "Transaction created successffully",
-      data: transaction,
-    });
-  } catch (error) {
-    res.status(501).send({
-      success: false,
-      message: "Something went wrong on createNewTransaction",
-      error: error.message,
-    });
-  }
-};
-
+//Executes a new transaction
 TransactionController.executeNewTransaction = async (req, res) => {
   let data = req.params;
   try {
@@ -76,14 +54,14 @@ TransactionController.executeNewTransaction = async (req, res) => {
       const addresseeData = parseInt(data.addressee);
       const ammountData = parseInt(data.ammount);
 
-      Wallet.decrement(
+      await Wallet.decrement(
         { balance: ammountData },
         {
           where: { id: senderData },
         },
         { transaction: t }
       );
-      Wallet.increment(
+      await Wallet.increment(
         { balance: ammountData },
         { where: { id: addresseeData } },
         { transaction: t }
@@ -110,7 +88,6 @@ TransactionController.executeNewTransaction = async (req, res) => {
     res.status(501).send({
       success: false,
       message: "Something went wrong on executeNewTransaction",
-      // errorTotal: error,
       errorMensaje: error.message,
     });
   }
