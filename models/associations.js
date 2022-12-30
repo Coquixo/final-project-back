@@ -26,5 +26,5 @@ Users.belongsTo(Roles);
 
 //Relation 1 to N Users => Transactions
 
-Users.hasMany(Transactions);
-Transactions.belongsTo(Users);
+Wallets.hasMany(Transactions);
+Transactions.belongsTo(Wallets);

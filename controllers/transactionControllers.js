@@ -1,4 +1,6 @@
+const sequelize = require("../db/db");
 const Transaction = require("../models/transactions");
+const Wallet = require("../models/wallets");
 
 const TransactionController = () => {};
 
@@ -65,4 +67,70 @@ TransactionController.createNewTransaction = async (req, res) => {
     });
   }
 };
+
+TransactionController.executeNewTransaction = async (req, res) => {
+  let data = req.params;
+  try {
+    const transaction = await sequelize.transaction(async (t) => {
+      const senderData = parseInt(data.sender);
+      const addresseeData = parseInt(data.addressee);
+      const ammountData = parseInt(data.ammount);
+
+      const transaction = await Transaction.create(
+        {
+          sender_wallet: senderData,
+          addressee_wallet: addresseeData,
+          quantity: ammountData,
+        },
+        { transaction: t }
+      );
+
+      console.log("LLEGA HASTA AQUI");
+
+      const sender = await Wallet.findOne({
+        where: {
+          id: senderData,
+        },
+      });
+      const addressee = await Wallet.findOne({
+        where: {
+          id: addresseeData,
+        },
+      });
+
+      await sender.setShooter(
+        {
+          user_id: senderData,
+          card_id: addresseeData,
+          balance: sender.balance - ammountData,
+        },
+        { transaction: t }
+      );
+      await addressee.setShooter(
+        {
+          user_id: senderData,
+          card_id: addresseeData,
+          balance: addressee.balance + ammountData,
+        },
+        { transaction: t }
+      );
+
+      return transaction;
+    });
+
+    res.status(201).send({
+      success: true,
+      message: "Transaction made successffully",
+      data: transaction,
+    });
+  } catch (error) {
+    res.status(501).send({
+      success: false,
+      message: "Something went wrong on executeNewTransaction",
+      // errorTotal: error,
+      errorMensaje: error.message,
+    });
+  }
+};
+
 module.exports = TransactionController;

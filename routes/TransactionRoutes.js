@@ -11,11 +11,15 @@ router.get("/:user_id", TransactionController.getUserTransactions);
 //When we send money we launch add/withdraw money from wallet controllers and create a new transaction.
 
 //Create a new transaction
+// router.post(
+//   "/:sender/:addressee/:ammount",
+//   TransactionController.createNewTransaction
+// );
+
 router.post(
   "/:sender/:addressee/:ammount",
-  TransactionController.createNewTransaction
+  TransactionController.executeNewTransaction
 );
-
 //Admin
 //Get All transactions from every User
 router.get("/", isAdmin(), TransactionController.getEveryTransaction);
