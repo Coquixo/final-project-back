@@ -18,8 +18,8 @@ module.exports = {
           country: "Spain",
           city: "Palma",
           address: "Calle ejemplo numero 100",
-          state: 1,
-          role: 1,
+          StateId: 1,
+          RoleId: 1,
         },
         {
           id: 2,
@@ -33,8 +33,8 @@ module.exports = {
           country: "Spain",
           city: "Palma",
           address: "Calle ejemplo numero 100",
-          state: 1,
-          role: 1,
+          StateId: 1,
+          RoleId: 1,
         },
         {
           id: 3,
@@ -48,8 +48,8 @@ module.exports = {
           country: "Spain",
           city: "Palma",
           address: "Calle ejemplo numero 100",
-          state: 1,
-          role: 2,
+          StateId: 1,
+          RoleId: 2,
         },
         {
           id: 4,
@@ -63,8 +63,8 @@ module.exports = {
           country: "Spain",
           city: "Palma",
           address: "Calle ejemplo numero 100",
-          state: 2,
-          role: 1,
+          StateId: 2,
+          RoleId: 1,
         },
       ],
       {}

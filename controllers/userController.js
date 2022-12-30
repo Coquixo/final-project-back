@@ -103,7 +103,7 @@ UserController.checkUserStatus = async (req, res) => {
       success: true,
       message: "Bringing User State Successffully",
       email: user.email,
-      state: user.state,
+      StateId: user.StateId,
     });
   } catch (error) {
     res.status(501).send({
@@ -122,7 +122,7 @@ UserController.changeUserStatus = async (req, res) => {
     let newStatus = req.body.state;
     await User.update(
       {
-        state: newStatus,
+        StateId: newStatus,
       },
       { where: { email: target } }
     );

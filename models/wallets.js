@@ -12,7 +12,7 @@ Wallets.init(
       unique: true,
     },
 
-    user_id: {
+    UserId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -21,7 +21,7 @@ Wallets.init(
         key: "id",
       },
     },
-    card_id: {
+    CardId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,

@@ -10,7 +10,7 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      user_id: {
+      UserId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
@@ -19,7 +19,7 @@ module.exports = {
           key: "id",
         },
       },
-      card_id: {
+      CardId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,

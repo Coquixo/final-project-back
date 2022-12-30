@@ -74,7 +74,7 @@ module.exports = {
           len: [1, 55],
         },
       },
-      state: {
+      StateId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -82,7 +82,7 @@ module.exports = {
           key: "id",
         },
       },
-      role: {
+      RoleId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

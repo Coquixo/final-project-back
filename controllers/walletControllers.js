@@ -8,7 +8,7 @@ WalletsController.getWalletBalance = async (req, res) => {
   let data = req.params;
   try {
     let wallet = await Wallets.findOne({
-      where: { user_id: data.user, card_id: data.card },
+      where: { UserId: data.user, CardId: data.card },
     });
     res.status(201).send({
       success: true,
@@ -28,8 +28,8 @@ WalletsController.createNewWallet = async (req, res) => {
   let data = req.params;
   try {
     let wallet = await Wallets.create({
-      user_id: data.user,
-      card_id: data.card,
+      UserId: data.user,
+      CardId: data.card,
       balance: 0,
     });
 

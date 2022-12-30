@@ -79,7 +79,7 @@ Users.init(
         len: [1, 55],
       },
     },
-    state: {
+    StateId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -87,7 +87,7 @@ Users.init(
         key: "id",
       },
     },
-    role: {
+    RoleId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {

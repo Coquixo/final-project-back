@@ -42,6 +42,7 @@ Transactions.init(
     createdAt: true,
     updatedAt: false,
     freezeTableName: true,
+    underscored: false,
   }
 );
 
