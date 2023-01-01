@@ -10,13 +10,20 @@ const getTokenValues = (auth) => {
 const isSameUser = () => async (req, res, next) => {
   let auth = req.headers.authorization;
   let inputEmail = req.params.email;
+  let inputId = req.params.user_id;
   let tokenData = getTokenValues(auth);
-  console.log(tokenData);
+  console.log(tokenData.email);
+  console.log(inputId);
   try {
     if (tokenData.role === 1) {
       return next();
     }
-    if (inputEmail !== tokenData.email) {
+
+    if (parseInt(inputId) !== tokenData.id) {
+      throw new Error("You have no access to do that");
+    }
+
+    if (inputEmail !== tokenData.email && inputEmail !== undefined) {
       throw new Error("You have no access, that's not your profile");
     }
     return next();

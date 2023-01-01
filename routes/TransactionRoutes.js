@@ -2,11 +2,15 @@ const express = require("express");
 const router = express.Router();
 
 const TransactionController = require("../controllers/transactionControllers");
-const { isAdmin } = require("../middlewares/authMiddlewares");
+const { isAdmin, isSameUser } = require("../middlewares/authMiddlewares");
 
 //Not Admin
 //Get every transaction from User //Admin also can
-router.get("/:user_id", TransactionController.getUserTransactions);
+router.get(
+  "/:user_id",
+  isSameUser(),
+  TransactionController.getUserTransactions
+);
 
 //Executes a new transaction
 router.post(
