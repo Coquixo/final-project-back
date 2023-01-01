@@ -41,7 +41,6 @@ const isMyWallet = () => async (req, res, next) => {
   let senderId = req.params.sender;
   let auth = req.headers.authorization;
   let tokenData = await getTokenValues(auth);
-  console.log(tokenData.id);
   try {
     let wallet = await Wallets.findOne({ where: { id: senderId } });
 
