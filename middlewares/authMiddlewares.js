@@ -11,12 +11,11 @@ const isSameUser = () => async (req, res, next) => {
   let auth = req.headers.authorization;
   let inputEmail = req.params.email;
   let tokenData = getTokenValues(auth);
+  console.log(tokenData);
   try {
     if (tokenData.role === 1) {
       return next();
     }
-    console.log(tokenData.role);
-
     if (inputEmail !== tokenData.email) {
       throw new Error("You have no access, that's not your profile");
     }
