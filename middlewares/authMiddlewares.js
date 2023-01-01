@@ -1,3 +1,5 @@
+const Wallets = require("../models/wallets");
+
 const getTokenValues = (auth) => {
   const token = auth.substring(7, auth.lenght);
 
@@ -11,9 +13,8 @@ const isSameUser = () => async (req, res, next) => {
   let auth = req.headers.authorization;
   let inputEmail = req.params.email;
   let inputId = req.params.user_id;
-  let tokenData = getTokenValues(auth);
-  console.log(tokenData.email);
-  console.log(inputId);
+  let tokenData = await getTokenValues(auth);
+
   try {
     if (tokenData.role === 1) {
       return next();
@@ -26,6 +27,28 @@ const isSameUser = () => async (req, res, next) => {
     if (inputEmail !== tokenData.email && inputEmail !== undefined) {
       throw new Error("You have no access, that's not your profile");
     }
+    return next();
+  } catch (error) {
+    res.status(403).json({
+      success: false,
+      message: "Something went wrong isSameUSer",
+      error: error.message,
+    });
+  }
+};
+
+const isMyWallet = () => async (req, res, next) => {
+  let senderId = req.params.sender;
+  let auth = req.headers.authorization;
+  let tokenData = await getTokenValues(auth);
+  console.log(tokenData.id);
+  try {
+    let wallet = await Wallets.findOne({ where: { id: senderId } });
+
+    if (tokenData.id !== wallet.UserId) {
+      throw new Error("That's not your wallet");
+    }
+
     return next();
   } catch (error) {
     res.status(403).json({
@@ -63,4 +86,4 @@ const statusCheck = () => {
   }
 };
 
-module.exports = { isSameUser, isAdmin, statusCheck };
+module.exports = { isSameUser, isAdmin, statusCheck, isMyWallet };

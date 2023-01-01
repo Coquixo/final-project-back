@@ -2,7 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 const TransactionController = require("../controllers/transactionControllers");
-const { isAdmin, isSameUser } = require("../middlewares/authMiddlewares");
+const {
+  isAdmin,
+  isSameUser,
+  isMyWallet,
+} = require("../middlewares/authMiddlewares");
 
 //Not Admin
 //Get every transaction from User //Admin also can
@@ -15,6 +19,7 @@ router.get(
 //Executes a new transaction
 router.post(
   "/:sender/:addressee/:ammount",
+  isMyWallet(),
   TransactionController.executeNewTransaction
 );
 //sender = sender wallets id
