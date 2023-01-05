@@ -27,8 +27,8 @@ AuthController.signIn = async (req, res) => {
       age: data.age,
       email: data.email,
       password: password,
-      state: 1,
-      role: 2,
+      StateId: 1,
+      RoleId: 2,
     });
 
     res.status(201).send({
