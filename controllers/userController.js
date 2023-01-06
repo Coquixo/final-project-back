@@ -27,7 +27,14 @@ UserController.getAllUsers = async (req, res) => {
 UserController.updateUser = async (req, res) => {
   let data = req.body;
   try {
-    let newPassword = hashPassword(data.password);
+    let searchUser = await User.findOne({
+      where: { email: req.params.email },
+    });
+
+    let newPassword = searchUser.password;
+    if (data.password) {
+      newPassword = await hashPassword(data.password);
+    }
     let user = await User.update(
       {
         name: data.name,
