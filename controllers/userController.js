@@ -2,6 +2,10 @@ const User = require("../models/users");
 
 //AuthServices:
 const { hashPassword, generateUserToken } = require("../services/authServices");
+const {
+  assertIsValidPassword,
+  assertIsValidEmail,
+} = require("../services/errorManage");
 
 const UserController = {};
 
@@ -27,12 +31,14 @@ UserController.getAllUsers = async (req, res) => {
 UserController.updateUser = async (req, res) => {
   let data = req.body;
   try {
+    await assertIsValidEmail(req.params.email);
     let searchUser = await User.findOne({
       where: { email: req.params.email },
     });
 
     let newPassword = searchUser.password;
     if (data.password) {
+      await assertIsValidPassword(newPassword);
       newPassword = await hashPassword(data.password);
     }
     let user = await User.update(
