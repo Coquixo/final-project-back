@@ -14,7 +14,6 @@ const isSameUser = () => async (req, res, next) => {
   let inputEmail = req.params.email;
   let inputId = req.params.user_id;
   let tokenData = await getTokenValues(auth);
-
   try {
     if (tokenData.role === 1) {
       return next();

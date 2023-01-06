@@ -72,6 +72,8 @@ AuthController.logIn = async (req, res) => {
       country: user.country,
       city: user.city,
       address: user.address,
+      state: user.StateId,
+      role: user.RoleId,
       token: generateUserToken(user),
     });
   } catch (error) {
