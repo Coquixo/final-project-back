@@ -15,11 +15,13 @@ const isSameUser = () => async (req, res, next) => {
   let inputId = req.params.user_id;
   let tokenData = await getTokenValues(auth);
   try {
+    console.log(tokenData);
+    console.log(inputEmail);
+    console.log(inputId);
     if (tokenData.role === 1) {
       return next();
     }
-
-    if (parseInt(inputId) !== tokenData.id) {
+    if (parseInt(inputId) !== tokenData.id && inputId !== undefined) {
       throw new Error("You have no access to do that");
     }
 
