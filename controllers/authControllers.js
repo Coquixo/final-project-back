@@ -63,6 +63,7 @@ AuthController.logIn = async (req, res) => {
     res.status(202).send({
       success: true,
       message: "User logged successfully",
+      id: user.id,
       email: user.email,
       name: user.name,
       surname: user.surname,
@@ -71,7 +72,6 @@ AuthController.logIn = async (req, res) => {
       country: user.country,
       city: user.city,
       address: user.address,
-      wallet: user.wallet,
       token: generateUserToken(user),
     });
   } catch (error) {
