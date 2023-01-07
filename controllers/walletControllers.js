@@ -50,7 +50,8 @@ WalletsController.createNewWallet = async (req, res) => {
 WalletsController.addOrWithdrawMoneyInWallet = async (req, res) => {
   let data = req.params;
   try {
-    let newAction = await checkAction(data.action);
+    let action = data.action;
+    let newAction = await checkAction(action.toString().toLowerCase());
     if (newAction == true) {
       let wallet = await Wallets.increment(
         {
@@ -71,6 +72,7 @@ WalletsController.addOrWithdrawMoneyInWallet = async (req, res) => {
     res.status(201).send({
       success: true,
       message: "Balance updated successffully",
+      data: `${data.ammount} was changed`,
     });
   } catch (error) {
     res.status(501).send({
