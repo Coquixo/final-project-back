@@ -17,10 +17,14 @@ router.get(
 );
 
 //Executes a new transaction
+// router.post(
+//   "/:sender/:addressee/:ammount",
+//   isMyWallet(),
+//   TransactionController.executeNewTransaction
+// );
 router.post(
-  "/:sender/:addressee/:ammount",
-  isMyWallet(),
-  TransactionController.executeNewTransaction
+  "/:sender/:addressee/:ammount/email",
+  TransactionController.executeNewTransactionByEmail
 );
 //sender = sender wallets id
 //addressee = addressee wallets id
