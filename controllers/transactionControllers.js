@@ -27,9 +27,14 @@ TransactionController.getEveryTransaction = async (req, res) => {
 TransactionController.getUserTransactions = async (req, res) => {
   try {
     let data = req.params;
+    let wallet = await Wallet.findOne({
+      where: {
+        UserId: data.user_id,
+      },
+    });
     let transaction = await Transaction.findAll({
       where: {
-        sender_wallet: data.user_id,
+        sender_wallet: wallet.dataValues.id,
       },
     });
     res.status(201).send({
