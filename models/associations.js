@@ -30,8 +30,10 @@ Wallets.hasMany(Transactions, { sourceKey: "id" });
 Transactions.belongsTo(Wallets, {
   targetKey: "id",
   foreignKey: "sender_wallet",
+  as: "sender",
 });
 Transactions.belongsTo(Wallets, {
   targetKey: "id",
   foreignKey: "addressee_wallet",
+  as: "addressee",
 });
