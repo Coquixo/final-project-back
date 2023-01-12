@@ -37,23 +37,6 @@ TransactionController.getEveryTransaction = async (req, res) => {
     });
   }
 };
-// TransactionController.getEveryTransaction2 = async (req, res) => {
-//   try {
-//     let transaction = await Transaction.findAll({ include: Wallet.ids });
-
-//     res.status(201).send({
-//       success: true,
-//       message: "Bringing all transactions data successffully",
-//       data: transaction,
-//     });
-//   } catch (error) {
-//     res.status(501).send({
-//       success: false,
-//       message: "Something went wrong on getEveryTransaction",
-//       error: error.message,
-//     });
-//   }
-// };
 
 //Find someones all transactions
 TransactionController.getUserTransactions = async (req, res) => {
@@ -65,6 +48,20 @@ TransactionController.getUserTransactions = async (req, res) => {
       },
     });
     let transaction = await Transaction.findAll({
+      include: [
+        {
+          model: Wallet,
+          foreignKey: "sender_wallet",
+          include: User,
+          as: "sender",
+        },
+        {
+          model: Wallet,
+          foreignKey: "addressee_wallet",
+          include: User,
+          as: "addressee",
+        },
+      ],
       where: {
         sender_wallet: wallet.dataValues.id,
       },
