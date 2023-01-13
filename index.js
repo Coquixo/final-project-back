@@ -4,8 +4,9 @@ const db = require("./db/db.js");
 const router = require("./router");
 require("./models/associations");
 const cors = require("cors");
+const process = require("process");
 
-const PORT = 7998;
+const PORT = process.env.PORT || 5000;
 
 //Cors Middleware
 app.use(cors());
