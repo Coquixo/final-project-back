@@ -37,7 +37,7 @@ AuthController.signIn = async (req, res) => {
       token: generateUserToken(user),
     });
   } catch (error) {
-    res.status(500).send({
+    res.status(501).send({
       success: false,
       message: "ERROR: User could not be created",
       error: error.message,
