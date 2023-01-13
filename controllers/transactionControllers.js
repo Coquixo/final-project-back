@@ -22,7 +22,7 @@ TransactionController.getEveryTransaction = async (req, res) => {
           as: "addressee",
         },
       ],
-      order: ["createdAt", "ASC"],
+      order: [["createdAt", "DESC"]],
     });
 
     res.status(201).send({
@@ -63,7 +63,7 @@ TransactionController.getUserTransactions = async (req, res) => {
           as: "addressee",
         },
       ],
-      order: ["createdAt", "ASC"],
+      order: [["createdAt", "DESC"]],
       where: {
         sender_wallet: wallet.dataValues.id,
       },
