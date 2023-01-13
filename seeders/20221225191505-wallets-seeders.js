@@ -15,7 +15,7 @@ module.exports = {
         {
           id: 2,
           UserId: 1,
-          CardId: 2,
+          CardId: 1,
           balance: 20,
         },
         {
@@ -27,13 +27,13 @@ module.exports = {
         {
           id: 4,
           UserId: 3,
-          CardId: 2,
+          CardId: 1,
           balance: 10000,
         },
         {
           id: 5,
           UserId: 4,
-          CardId: 2,
+          CardId: 1,
           balance: 9750,
         },
       ],

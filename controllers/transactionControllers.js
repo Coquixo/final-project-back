@@ -63,10 +63,10 @@ TransactionController.getUserTransactions = async (req, res) => {
           as: "addressee",
         },
       ],
-      order: [["createdAt", "DESC"]],
       where: {
         sender_wallet: wallet.dataValues.id,
       },
+      order: [["createdAt", "DESC"]],
     });
     res.status(201).send({
       success: true,
