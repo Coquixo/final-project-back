@@ -5,7 +5,7 @@ const router = require("./router");
 require("./models/associations");
 const cors = require("cors");
 
-const PORT = 5000;
+const PORT = 7998;
 
 //Cors Middleware
 app.use(cors());
