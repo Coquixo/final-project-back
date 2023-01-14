@@ -82,53 +82,53 @@ TransactionController.getUserTransactions = async (req, res) => {
   }
 };
 
-//Executes a new transaction
-// TransactionController.executeNewTransaction = async (req, res) => {
-//   let data = req.params;
-//   try {
-//     const transaction = await sequelize.transaction(async (t) => {
-//       const senderData = parseInt(data.sender);
-//       const addresseeData = parseInt(data.addressee);
-//       const ammountData = parseInt(data.ammount);
+// Executes a new transaction
+TransactionController.executeNewTransaction = async (req, res) => {
+  let data = req.params;
+  try {
+    const transaction = await sequelize.transaction(async (t) => {
+      const senderData = parseInt(data.sender);
+      const addresseeData = parseInt(data.addressee);
+      const ammountData = parseInt(data.ammount);
 
-//       await Wallet.decrement(
-//         { balance: ammountData },
-//         {
-//           where: { id: senderData },
-//         },
-//         { transaction: t }
-//       );
-//       await Wallet.increment(
-//         { balance: ammountData },
-//         { where: { id: addresseeData } },
-//         { transaction: t }
-//       );
+      await Wallet.decrement(
+        { balance: ammountData },
+        {
+          where: { id: senderData },
+        },
+        { transaction: t }
+      );
+      await Wallet.increment(
+        { balance: ammountData },
+        { where: { id: addresseeData } },
+        { transaction: t }
+      );
 
-//       const transaction = await Transaction.create(
-//         {
-//           WalletId: 0,
-//           sender_wallet: senderData,
-//           addressee_wallet: addresseeData,
-//           quantity: ammountData,
-//         },
-//         { transaction: t }
-//       );
-//       return transaction;
-//     });
+      const transaction = await Transaction.create(
+        {
+          WalletId: 0,
+          sender_wallet: senderData,
+          addressee_wallet: addresseeData,
+          quantity: ammountData,
+        },
+        { transaction: t }
+      );
+      return transaction;
+    });
 
-//     res.status(201).send({
-//       success: true,
-//       message: "Transaction made successffully",
-//       data: transaction,
-//     });
-//   } catch (error) {
-//     res.status(501).send({
-//       success: false,
-//       message: "Something went wrong on executeNewTransaction",
-//       error: error.message,
-//     });
-//   }
-// };
+    res.status(201).send({
+      success: true,
+      message: "Transaction made successffully",
+      data: transaction,
+    });
+  } catch (error) {
+    res.status(501).send({
+      success: false,
+      message: "Something went wrong on executeNewTransaction",
+      error: error.message,
+    });
+  }
+};
 
 TransactionController.executeNewTransactionByEmail = async (req, res) => {
   const data = req.params;

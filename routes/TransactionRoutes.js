@@ -16,18 +16,22 @@ router.get(
   TransactionController.getUserTransactions
 );
 
-//Executes a new transaction
-// router.post(
-//   "/:sender/:addressee/:ammount",
-//   isMyWallet(),
-//   TransactionController.executeNewTransaction
-// );
+// Executes a new transaction inseting User's id
+//sender = sender wallets id
+//addressee = addressee wallets id
+router.post(
+  "/:sender/:addressee/:ammount",
+  isMyWallet(),
+  TransactionController.executeNewTransaction
+);
+
+//Executes a new transaction inserting email
+//sender = sender wallets email
+//addressee = addressee wallets email
 router.post(
   "/:sender/:addressee/:ammount/email",
   TransactionController.executeNewTransactionByEmail
 );
-//sender = sender wallets id
-//addressee = addressee wallets id
 
 //Admin
 //Get All transactions from every User
